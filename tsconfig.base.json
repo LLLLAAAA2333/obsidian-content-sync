@@ -1,7 +1,0 @@
-{
-	"compilerOptions": {
-		"moduleResolution": "bundler",
-		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true
-	}
-}

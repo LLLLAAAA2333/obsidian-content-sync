@@ -1,0 +1,88 @@
+{
+	"version": "0.3.0",
+	"before": {
+		"commit": "ffe7912837d30f37192ce8806f611b8b6f535cb4",
+		"totalFiles": 1226,
+		"totalBytes": 12254216,
+		"groups": {
+			"unchangedUpstream": {
+				"files": 1154,
+				"bytes": 11754411
+			},
+			"modifiedUpstreamPath": {
+				"files": 15,
+				"bytes": 265416
+			},
+			"addedPath": {
+				"files": 57,
+				"bytes": 234389
+			}
+		},
+		"unchangedUpstreamFilePercent": 94.12724306688418,
+		"unchangedUpstreamBytePercent": 95.92136290073555
+	},
+	"verification": {
+		"unitTests": 85,
+		"faultTests": 2,
+		"build": "passed",
+		"typecheck": "passed",
+		"moduleBoundaries": "passed",
+		"cleanInstallWithFrozenLockfile": "passed",
+		"cleanBuildAndTests": "passed",
+		"twoDeviceDemo": "passed",
+		"obsidian": {
+			"passed": true,
+			"root": "<isolated-runtime>",
+			"vault": "<isolated-vault>",
+			"pluginId": "plain-directory-sync",
+			"obsidian": "1.14.4 (visible app title)",
+			"checks": [
+				"preview creates no metadata",
+				"native preview and execute controls",
+				"cancel confirmation produces zero writes",
+				"read-only text comparison and narrow desktop layout",
+				"attachment bytes",
+				"explicit conflict resolution",
+				"lost response visible error",
+				"real process restart and idempotent recovery"
+			],
+			"errors": [],
+			"requests": {
+				"get": 41,
+				"put": 2,
+				"delete": 0
+			}
+		},
+		"productionVaultAccess": false,
+		"productionRemoteAccess": false
+	},
+	"retainedAlgorithms": {
+		"files": 4,
+		"linesIncludingAttribution": 464,
+		"bytes": 13563,
+		"shareOfTypescriptSourceBytes": 0.19118973780659712,
+		"sourceFiles": [
+			"src/merge/anchored-hunks.ts",
+			"src/merge/merge-model.ts",
+			"src/merge/diff.ts",
+			"src/merge/eol.ts"
+		]
+	},
+	"bundle": {
+		"beforeBytes": 165137,
+		"afterBytes": 159518
+	},
+	"after": {
+		"trackedFiles": 57,
+		"approximateTrackedBytes": 221000,
+		"typescriptSourceFiles": 19,
+		"typescriptSourceBytes": 70940,
+		"runtimeDependencies": ["@jest/diff-sequences", "yaml"],
+		"excludes": [
+			"git history",
+			"node_modules",
+			"build artifacts",
+			"local runtime records"
+		]
+	}
+}

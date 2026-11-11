@@ -1,8 +1,2 @@
-packages:
-  - "packages/*"
-
-# esbuild bundles the plugin; workerd/sharp back `wrangler dev`.
 onlyBuiltDependencies:
   - esbuild
-  - workerd
-  - sharp
