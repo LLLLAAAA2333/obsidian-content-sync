@@ -1,0 +1,40 @@
+{
+	"version": "0.2.0",
+	"plainTests": 67,
+	"standaloneFaultTests": 2,
+	"monorepoTests": {
+		"plugin": 3082,
+		"protocol": 63,
+		"relay": 283,
+		"viewer": 151,
+		"total": 3579
+	},
+	"fullTypecheck": "passed",
+	"architecture": "passed",
+	"plainBuild": "passed",
+	"encryptedBuild": "passed",
+	"lint": {
+		"errors": 0,
+		"warnings": 16,
+		"infos": 2
+	},
+	"compiledTwoDevice": {
+		"passed": true,
+		"compiledCore": true,
+		"isolatedDirectory": "<checkout>/runtime/local-updated-huuEwX",
+		"checks": [
+			"adoption with different updated performs zero PUT",
+			"upload strips only top-level updated",
+			"second device retains its own updated",
+			"other properties and body propagate",
+			"updated-only edit produces zero PUT",
+			"remote legacy updated does not overwrite local updated",
+			"restart reloads shared baseline"
+		],
+		"realVaultWrites": 0,
+		"realRemoteRequests": 0
+	},
+	"liveDryRunEvidence": "live-webdav-local-updated-20261110.json",
+	"ui": "Existing 0.1.0 isolated Obsidian validation retained; full UI interactions not repeated for this update.",
+	"publicationRedaction": "Private roots and configured endpoint replaced for publication; aggregate metrics retained."
+}

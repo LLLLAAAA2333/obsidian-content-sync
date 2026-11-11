@@ -1,0 +1,43 @@
+export const EStorageBackend = {
+	S3: "s3",
+	WebDAV: "webdav",
+	GoogleDrive: "google-drive",
+} as const;
+export type EStorageBackend =
+	(typeof EStorageBackend)[keyof typeof EStorageBackend];
+
+export interface S3StorageConfig {
+	kind: typeof EStorageBackend.S3;
+	endpoint: string;
+	region: string;
+	bucket: string;
+	prefix: string;
+	accessKeyId: string;
+	secretAccessKey: string;
+	forcePathStyle: boolean;
+	concurrency: number;
+}
+
+export interface WebDAVStorageConfig {
+	kind: typeof EStorageBackend.WebDAV;
+	baseUrl: string;
+	basePath: string;
+	username: string;
+	password: string;
+	concurrency: number;
+}
+
+export interface GoogleDriveStorageConfig {
+	kind: typeof EStorageBackend.GoogleDrive;
+	folderName: string;
+	authServerUrl: string;
+	accessToken: string;
+	refreshToken: string;
+	expiresAt: number;
+	concurrency: number;
+}
+
+export type StorageAdapterConfig =
+	| S3StorageConfig
+	| WebDAVStorageConfig
+	| GoogleDriveStorageConfig;

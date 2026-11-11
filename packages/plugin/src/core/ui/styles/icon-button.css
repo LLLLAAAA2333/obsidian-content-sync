@@ -1,0 +1,37 @@
+.mdsync-icon-btn {
+	background-color: var(--interactive-normal);
+	min-width: 32px;
+	padding: 0 var(--size-4-2);
+}
+
+.mdsync-icon-btn:where(.mdsync-icon-only) {
+	min-width: var(--input-height);
+	padding-inline: 0;
+}
+
+.mdsync-labeled-btn {
+	gap: var(--size-2-2);
+}
+
+.mdsync-labeled-btn-icon {
+	display: inline-flex;
+}
+
+.mdsync-labeled-btn-icon svg {
+	width: var(--mdsync-icon);
+	height: var(--mdsync-icon);
+}
+
+.mdsync-icon-btn:hover {
+	background-color: var(--interactive-hover);
+}
+
+.mdsync-icon-btn.is-active {
+	background-color: var(--interactive-accent);
+	color: var(--text-on-accent);
+}
+
+/* Obsidian styles buttons as inline-flex, which would beat the hidden attribute. */
+.mdsync-icon-btn[hidden] {
+	display: none;
+}

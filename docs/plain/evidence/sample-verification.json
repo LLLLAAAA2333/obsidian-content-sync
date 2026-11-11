@@ -1,0 +1,14 @@
+{
+	"metadataUnchanged": true,
+	"scopedContentUnchanged": true,
+	"scans": [
+		{
+			"seconds": 1.1838021660000002,
+			"peakRssMiB": 135.71875
+		},
+		{
+			"seconds": 1.311243125,
+			"peakRssMiB": 140.28125
+		}
+	]
+}

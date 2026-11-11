@@ -1,0 +1,36 @@
+{
+	"root": "<sample-vault>",
+	"readOnly": true,
+	"metadata": {
+		"files": 2969,
+		"bytes": 866538771,
+		"markdown": 1006,
+		"fingerprint": "27569f604e9a061e1bc5b29e3042c81f7d1ee3cd236f574f34d15e87c082f647"
+	},
+	"scope": {
+		"files": 2575,
+		"bytes": 404571626,
+		"excludedRoots": 13,
+		"unknown": 0
+	},
+	"scanSeconds": 1.311243125,
+	"totalSeconds": 1.4014268749999998,
+	"peakRssMiB": 140.28125,
+	"streamBufferKiB": 64,
+	"concurrency": 2,
+	"aggregateContentDigest": "5e4cfca668473686853583b4f39173413cb6b33c30d80f66fd158ec7f1c4b62a",
+	"sameFilesystem": true,
+	"exclusions": [
+		".obsidian",
+		".claudian",
+		".git",
+		".sync_state.json",
+		".DS_Store",
+		".plain-sync",
+		".trash"
+	],
+	"ordinaryWrites": 0,
+	"stateWrites": 0,
+	"networkRequests": 0,
+	"publicationRedaction": "Private roots and configured endpoint replaced for publication; aggregate metrics retained."
+}

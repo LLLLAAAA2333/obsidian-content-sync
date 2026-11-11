@@ -1,0 +1,9 @@
+{
+	"id": "plain-directory-sync",
+	"name": "Plain Directory Sync (实验)",
+	"version": "0.2.0",
+	"minAppVersion": "1.13.0",
+	"description": "基于 MDSync 的实验性普通目录内容同步，完整核验、冲突保护与本地恢复。",
+	"author": "Plain Directory Sync contributors; based on MDSync by k1tbyte",
+	"isDesktopOnly": true
+}

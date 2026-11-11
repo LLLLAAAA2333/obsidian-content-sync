@@ -1,0 +1,69 @@
+import { ADMIN_HEADER } from "@mdsync/protocol";
+import {
+	type GoogleOAuthEnv,
+	handleAuthCallback,
+	handleTokenRefresh,
+} from "./google-oauth";
+import { adminOnly, json } from "./http";
+import { handleHubRequest } from "./hub/access";
+import { Hub } from "./hub/durable-object";
+import { Link } from "./link/durable-object";
+import { handleLinkRequest } from "./link/routes";
+import { handleShellRequest, type ShellEnv } from "./link/shell";
+import type { LinkEnv } from "./link/stub";
+import { handleShareRequest } from "./share/broker";
+import type { ShareEnv } from "./share/kv";
+
+export interface Env extends ShareEnv, GoogleOAuthEnv, LinkEnv, ShellEnv {
+	/** Set by the plugin's deploy only; a relay from the workflow has none. */
+	RELAY_VERSION?: string;
+}
+
+export { Hub, Link };
+
+const CORS_PREFLIGHT_HEADERS = {
+	"Access-Control-Allow-Origin": "*",
+	"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+	"Access-Control-Allow-Headers": `Content-Type, Authorization, ${ADMIN_HEADER}`,
+} as const;
+
+const NOT_FOUND =
+	"Not found. Use /hub for realtime sync, /share/* for shared folders, /link/* for share links, or /auth for Google Drive.";
+
+export default {
+	async fetch(
+		request: Request,
+		env: Env,
+		_ctx: ExecutionContext,
+	): Promise<Response> {
+		if (request.method === "OPTIONS") {
+			return new Response(null, { headers: CORS_PREFLIGHT_HEADERS });
+		}
+
+		const url = new URL(request.url);
+		if (url.pathname === "/status") return status(request, env);
+
+		const shareResponse = await handleShareRequest(request, env, url);
+		if (shareResponse) return shareResponse;
+
+		const shellResponse = await handleShellRequest(request, env, url);
+		if (shellResponse) return shellResponse;
+
+		const linkResponse = await handleLinkRequest(request, env, url);
+		if (linkResponse) return linkResponse;
+
+		const hubResponse = await handleHubRequest(request, env, url);
+		if (hubResponse) return hubResponse;
+
+		if (url.pathname === "/refresh") return handleTokenRefresh(request, env);
+		if (url.pathname === "/auth") {
+			return handleAuthCallback(url, env, request);
+		}
+		return new Response(NOT_FOUND, { status: 404 });
+	},
+};
+
+/** Lets the plugin tell a wrong URL (no answer) from a wrong secret (401). */
+const status = adminOnly(async (_request: Request, env: Env) =>
+	json({ ok: true, version: env.RELAY_VERSION ?? null }),
+);

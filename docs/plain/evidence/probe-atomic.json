@@ -1,0 +1,535 @@
+{
+	"format": 1,
+	"scope": "Synthetic files in a newly created dedicated directory; observations, not a general server guarantee",
+	"targetOrigin": "http://127.0.0.1:62996",
+	"testDirectory": "/plain-probe-a18d9654-eb80-452c-a676-2ce5c18a116a/",
+	"startedAt": "2026-11-10T13:59:39.538Z",
+	"node": "v25.8.2",
+	"events": [
+		{
+			"seq": 0,
+			"method": "MKCOL",
+			"path": "",
+			"atMs": 0.17487500000004275,
+			"phase": "headers"
+		},
+		{
+			"seq": 0,
+			"method": "MKCOL",
+			"path": "",
+			"atMs": 4.793334000000073,
+			"phase": "response",
+			"status": 201
+		},
+		{
+			"seq": 2,
+			"method": "PUT",
+			"path": "中文 空格%?#.zby",
+			"atMs": 5.205375000000004,
+			"phase": "headers"
+		},
+		{
+			"seq": 2,
+			"method": "PUT",
+			"path": "中文 空格%?#.zby",
+			"atMs": 6.841584000000012,
+			"phase": "response",
+			"status": 201
+		},
+		{
+			"seq": 4,
+			"method": "GET",
+			"path": "中文 空格%?#.zby",
+			"atMs": 6.929250000000025,
+			"phase": "headers"
+		},
+		{
+			"seq": 4,
+			"method": "GET",
+			"path": "中文 空格%?#.zby",
+			"atMs": 9.437125000000037,
+			"phase": "response",
+			"status": 200
+		},
+		{
+			"seq": 6,
+			"method": "PUT",
+			"path": "中文 空格%?#.zby",
+			"atMs": 12.649000000000001,
+			"phase": "headers"
+		},
+		{
+			"seq": 6,
+			"method": "PUT",
+			"path": "中文 空格%?#.zby",
+			"atMs": 12.899625000000015,
+			"phase": "response",
+			"status": 412
+		},
+		{
+			"seq": 8,
+			"method": "PUT",
+			"path": "中文 空格%?#.zby",
+			"atMs": 12.927125000000046,
+			"phase": "headers"
+		},
+		{
+			"seq": 8,
+			"method": "PUT",
+			"path": "中文 空格%?#.zby",
+			"atMs": 13.113042000000064,
+			"phase": "response",
+			"status": 201
+		},
+		{
+			"seq": 10,
+			"method": "GET",
+			"path": "中文 空格%?#.zby",
+			"atMs": 13.129000000000019,
+			"phase": "headers"
+		},
+		{
+			"seq": 10,
+			"method": "GET",
+			"path": "中文 空格%?#.zby",
+			"atMs": 13.374000000000024,
+			"phase": "response",
+			"status": 200
+		},
+		{
+			"seq": 12,
+			"method": "PUT",
+			"path": "中文 空格%?#.zby",
+			"atMs": 13.41208400000005,
+			"phase": "headers"
+		},
+		{
+			"seq": 12,
+			"method": "PUT",
+			"path": "中文 空格%?#.zby",
+			"atMs": 13.667084000000045,
+			"phase": "response",
+			"status": 412
+		},
+		{
+			"seq": 14,
+			"method": "DELETE",
+			"path": "中文 空格%?#.zby",
+			"atMs": 13.689125000000104,
+			"phase": "headers"
+		},
+		{
+			"seq": 14,
+			"method": "DELETE",
+			"path": "中文 空格%?#.zby",
+			"atMs": 13.899541999999997,
+			"phase": "response",
+			"status": 412
+		},
+		{
+			"seq": 16,
+			"method": "GET",
+			"path": "overlap-create.txt",
+			"atMs": 13.930000000000064,
+			"phase": "headers"
+		},
+		{
+			"seq": 16,
+			"method": "GET",
+			"path": "overlap-create.txt",
+			"atMs": 14.083042000000091,
+			"phase": "response",
+			"status": 404
+		},
+		{
+			"seq": 18,
+			"method": "PUT",
+			"path": "overlap-create.txt",
+			"atMs": 14.104667000000063,
+			"phase": "headers"
+		},
+		{
+			"seq": 19,
+			"method": "PUT",
+			"path": "overlap-create.txt",
+			"atMs": 114.66866700000003,
+			"phase": "headers"
+		},
+		{
+			"seq": 19,
+			"method": "PUT",
+			"path": "overlap-create.txt",
+			"atMs": 115.34862500000008,
+			"phase": "response",
+			"status": 201
+		},
+		{
+			"seq": 18,
+			"phase": "release-body",
+			"atMs": 115.39658400000008
+		},
+		{
+			"seq": 18,
+			"method": "PUT",
+			"path": "overlap-create.txt",
+			"atMs": 115.53979200000003,
+			"phase": "response",
+			"status": 412
+		},
+		{
+			"seq": 23,
+			"method": "GET",
+			"path": "overlap-create.txt",
+			"atMs": 115.56045900000004,
+			"phase": "headers"
+		},
+		{
+			"seq": 23,
+			"method": "GET",
+			"path": "overlap-create.txt",
+			"atMs": 115.75345900000002,
+			"phase": "response",
+			"status": 200
+		},
+		{
+			"seq": 25,
+			"method": "PUT",
+			"path": "overlap-overwrite.txt",
+			"atMs": 115.77991700000007,
+			"phase": "headers"
+		},
+		{
+			"seq": 25,
+			"method": "PUT",
+			"path": "overlap-overwrite.txt",
+			"atMs": 116.00150000000008,
+			"phase": "response",
+			"status": 201
+		},
+		{
+			"seq": 27,
+			"method": "GET",
+			"path": "overlap-overwrite.txt",
+			"atMs": 116.0183340000001,
+			"phase": "headers"
+		},
+		{
+			"seq": 27,
+			"method": "GET",
+			"path": "overlap-overwrite.txt",
+			"atMs": 116.16712500000006,
+			"phase": "response",
+			"status": 200
+		},
+		{
+			"seq": 29,
+			"method": "PUT",
+			"path": "overlap-overwrite.txt",
+			"atMs": 116.18254200000001,
+			"phase": "headers"
+		},
+		{
+			"seq": 30,
+			"method": "PUT",
+			"path": "overlap-overwrite.txt",
+			"atMs": 216.77295900000001,
+			"phase": "headers"
+		},
+		{
+			"seq": 30,
+			"method": "PUT",
+			"path": "overlap-overwrite.txt",
+			"atMs": 218.9100420000001,
+			"phase": "response",
+			"status": 201
+		},
+		{
+			"seq": 29,
+			"phase": "release-body",
+			"atMs": 218.99533400000007
+		},
+		{
+			"seq": 29,
+			"method": "PUT",
+			"path": "overlap-overwrite.txt",
+			"atMs": 219.48008400000003,
+			"phase": "response",
+			"status": 412
+		},
+		{
+			"seq": 34,
+			"method": "GET",
+			"path": "overlap-overwrite.txt",
+			"atMs": 219.5479170000001,
+			"phase": "headers"
+		},
+		{
+			"seq": 34,
+			"method": "GET",
+			"path": "overlap-overwrite.txt",
+			"atMs": 220.19287500000007,
+			"phase": "response",
+			"status": 200
+		},
+		{
+			"seq": 36,
+			"method": "PUT",
+			"path": "overlap-put-vs-delete.txt",
+			"atMs": 220.34945900000002,
+			"phase": "headers"
+		},
+		{
+			"seq": 36,
+			"method": "PUT",
+			"path": "overlap-put-vs-delete.txt",
+			"atMs": 221.04329200000006,
+			"phase": "response",
+			"status": 201
+		},
+		{
+			"seq": 38,
+			"method": "GET",
+			"path": "overlap-put-vs-delete.txt",
+			"atMs": 221.120584,
+			"phase": "headers"
+		},
+		{
+			"seq": 38,
+			"method": "GET",
+			"path": "overlap-put-vs-delete.txt",
+			"atMs": 221.71854200000007,
+			"phase": "response",
+			"status": 200
+		},
+		{
+			"seq": 40,
+			"method": "PUT",
+			"path": "overlap-put-vs-delete.txt",
+			"atMs": 221.76758400000006,
+			"phase": "headers"
+		},
+		{
+			"seq": 41,
+			"method": "DELETE",
+			"path": "overlap-put-vs-delete.txt",
+			"atMs": 323.321542,
+			"phase": "headers"
+		},
+		{
+			"seq": 41,
+			"method": "DELETE",
+			"path": "overlap-put-vs-delete.txt",
+			"atMs": 324.51641700000005,
+			"phase": "response",
+			"status": 204
+		},
+		{
+			"seq": 40,
+			"phase": "release-body",
+			"atMs": 324.62079200000005
+		},
+		{
+			"seq": 40,
+			"method": "PUT",
+			"path": "overlap-put-vs-delete.txt",
+			"atMs": 325.2231670000001,
+			"phase": "response",
+			"status": 412
+		},
+		{
+			"seq": 45,
+			"method": "GET",
+			"path": "overlap-put-vs-delete.txt",
+			"atMs": 325.3101250000001,
+			"phase": "headers"
+		},
+		{
+			"seq": 45,
+			"method": "GET",
+			"path": "overlap-put-vs-delete.txt",
+			"atMs": 326.02750000000003,
+			"phase": "response",
+			"status": 404
+		},
+		{
+			"seq": 47,
+			"method": "PUT",
+			"path": "overlap-delete-vs-put.txt",
+			"atMs": 326.14479200000005,
+			"phase": "headers"
+		},
+		{
+			"seq": 47,
+			"method": "PUT",
+			"path": "overlap-delete-vs-put.txt",
+			"atMs": 327.02204200000006,
+			"phase": "response",
+			"status": 201
+		},
+		{
+			"seq": 49,
+			"method": "GET",
+			"path": "overlap-delete-vs-put.txt",
+			"atMs": 327.073667,
+			"phase": "headers"
+		},
+		{
+			"seq": 49,
+			"method": "GET",
+			"path": "overlap-delete-vs-put.txt",
+			"atMs": 327.5020840000001,
+			"phase": "response",
+			"status": 200
+		},
+		{
+			"seq": 51,
+			"method": "DELETE",
+			"path": "overlap-delete-vs-put.txt",
+			"atMs": 327.53820900000005,
+			"phase": "headers"
+		},
+		{
+			"seq": 52,
+			"method": "PUT",
+			"path": "overlap-delete-vs-put.txt",
+			"atMs": 429.26645900000005,
+			"phase": "headers"
+		},
+		{
+			"seq": 52,
+			"method": "PUT",
+			"path": "overlap-delete-vs-put.txt",
+			"atMs": 430.895709,
+			"phase": "response",
+			"status": 201
+		},
+		{
+			"seq": 51,
+			"phase": "release-body",
+			"atMs": 431.00983400000007
+		},
+		{
+			"seq": 51,
+			"method": "DELETE",
+			"path": "overlap-delete-vs-put.txt",
+			"atMs": 431.4535840000001,
+			"phase": "response",
+			"status": 412
+		},
+		{
+			"seq": 56,
+			"method": "GET",
+			"path": "overlap-delete-vs-put.txt",
+			"atMs": 431.552459,
+			"phase": "headers"
+		},
+		{
+			"seq": 56,
+			"method": "GET",
+			"path": "overlap-delete-vs-put.txt",
+			"atMs": 432.1635,
+			"phase": "response",
+			"status": 200
+		},
+		{
+			"seq": 58,
+			"method": "PUT",
+			"path": "interrupt.txt",
+			"atMs": 432.26037500000007,
+			"phase": "headers"
+		},
+		{
+			"seq": 58,
+			"method": "PUT",
+			"path": "interrupt.txt",
+			"atMs": 432.73725,
+			"phase": "response",
+			"status": 201
+		},
+		{
+			"seq": 60,
+			"method": "GET",
+			"path": "interrupt.txt",
+			"atMs": 432.779542,
+			"phase": "headers"
+		},
+		{
+			"seq": 60,
+			"method": "GET",
+			"path": "interrupt.txt",
+			"atMs": 433.6662090000001,
+			"phase": "response",
+			"status": 200
+		},
+		{
+			"seq": 62,
+			"method": "PUT",
+			"path": "interrupt.txt",
+			"atMs": 433.7425840000001,
+			"phase": "headers"
+		},
+		{
+			"seq": 63,
+			"method": "GET",
+			"path": "interrupt.txt",
+			"atMs": 667.472,
+			"phase": "headers"
+		},
+		{
+			"seq": 63,
+			"method": "GET",
+			"path": "interrupt.txt",
+			"atMs": 668.860917,
+			"phase": "response",
+			"status": 200
+		},
+		{
+			"seq": 65,
+			"method": "GET",
+			"path": "never-created.txt",
+			"atMs": 668.9946669999999,
+			"phase": "headers"
+		},
+		{
+			"seq": 65,
+			"method": "GET",
+			"path": "never-created.txt",
+			"atMs": 669.444334,
+			"phase": "response",
+			"status": 404
+		}
+	],
+	"checks": {
+		"pathEncoding": true,
+		"listGetConsistency": true,
+		"strongEtag": true,
+		"createPrecondition": true,
+		"etagChanges": true,
+		"stalePut": true,
+		"staleDelete": true,
+		"overlap:create": true,
+		"overlap:overwrite": true,
+		"overlap:put-vs-delete": true,
+		"overlap:delete-vs-put": true,
+		"interruptedPutLeavesOldBytes": true,
+		"missingIs404": true
+	},
+	"unknown": [
+		"Server implementation/atomicity contract",
+		"Behavior beyond tested overlap, deadlines and directory size",
+		"Authorization failures outside this test account",
+		"Lock scope and expiry (locks not used)"
+	],
+	"automaticWritesEnabled": false,
+	"createdFiles": [
+		"中文 空格%?#.zby",
+		"overlap-create.txt",
+		"overlap-overwrite.txt",
+		"overlap-put-vs-delete.txt",
+		"overlap-delete-vs-put.txt",
+		"interrupt.txt"
+	],
+	"observedPass": true,
+	"finishedAt": "2026-11-10T13:59:40.207Z",
+	"environment": "atomic-local-mock"
+}

@@ -1,0 +1,38 @@
+.mdsync-code-line {
+	display: grid;
+	grid-template-columns: 3.5em minmax(0, 1fr);
+	min-height: 1.55em;
+	line-height: 1.55;
+}
+
+.mdsync-code-number {
+	padding: 0 var(--size-4-2);
+	color: var(--text-faint);
+	background: var(--background-secondary-alt);
+	text-align: right;
+	user-select: none;
+}
+
+.mdsync-code-text {
+	padding: 0 var(--size-4-2);
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.mdsync-code-line.is-removed {
+	background: rgba(var(--mdsync-tone-removed), 0.13);
+}
+
+.mdsync-code-line.is-added {
+	background: rgba(var(--mdsync-tone-added), 0.13);
+}
+
+.mdsync-code-line.is-removed .mdsync-code-text {
+	box-shadow: inset var(--mdsync-bar) 0 rgba(var(--mdsync-tone-removed), 0.7);
+}
+
+.mdsync-code-line.is-added .mdsync-code-text {
+	box-shadow: inset var(--mdsync-bar) 0 rgba(var(--mdsync-tone-added), 0.7);
+}
+
+/* Collapsed run of unchanged lines; the fold row collapses it back. */

@@ -1,0 +1,153 @@
+.workspace-leaf-content[data-type="mdsync-source-control"]
+	.view-content.mdsync-source-control {
+	display: flex;
+	flex-direction: column;
+	/* The scrollbar sits at the edge; the panel keeps the gutter. */
+	padding: var(--size-4-3) 0 0 var(--size-4-3);
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+	container-type: inline-size;
+}
+
+/* What the view sits on, for bars over it: a sidebar paints secondary, a tab primary. */
+.mdsync-source-control {
+	--mdsync-view-bg: var(--background-primary);
+}
+
+:is(.mod-sidedock, .workspace-drawer) .mdsync-source-control {
+	--mdsync-view-bg: var(--background-secondary);
+}
+
+.mdsync-source-tabs-row {
+	position: sticky;
+	top: 0;
+	z-index: 5;
+	display: flex;
+	flex: 0 0 auto;
+	align-items: center;
+	gap: var(--size-2-1);
+	margin-bottom: var(--size-4-2);
+	padding-right: var(--size-4-3);
+}
+
+.mdsync-source-tabs {
+	display: flex;
+	flex: 0 1 auto;
+	gap: var(--size-2-1);
+	min-width: 0;
+	margin-bottom: 0;
+}
+
+.mdsync-source-tools {
+	display: flex;
+	flex: 0 0 auto;
+	gap: var(--size-2-1);
+	margin-left: auto;
+}
+
+.mdsync-icon-btn:is(.mdsync-source-tools *, .mdsync-sync-summary-tools *) {
+	width: 28px;
+	min-width: 28px;
+	height: 28px;
+	padding: 0;
+	background: transparent;
+	box-shadow: none;
+	color: var(--text-muted);
+}
+
+.mdsync-icon-btn:is(
+	.mdsync-source-tools *,
+	.mdsync-sync-summary-tools *
+):hover {
+	background: var(--background-modifier-hover);
+	color: var(--text-normal);
+}
+
+:is(.mdsync-source-tools, .mdsync-sync-summary-tools) svg {
+	width: var(--mdsync-icon);
+	height: var(--mdsync-icon);
+}
+
+.mdsync-mobile-back {
+	display: inline-flex;
+	flex: 0 0 var(--mdsync-touch);
+	align-items: center;
+	justify-content: center;
+	width: var(--mdsync-touch);
+	height: var(--mdsync-touch);
+	padding: 0;
+}
+
+.mdsync-source-tabs .mdsync-source-tab-button {
+	display: flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	gap: var(--size-2-2);
+	min-width: 30px;
+	height: 28px;
+	padding: 0 var(--size-2-3);
+	border: 0;
+	box-shadow: none;
+	background: transparent;
+	color: var(--text-muted);
+	font-size: var(--font-ui-smaller);
+}
+
+.mdsync-source-tabs .mdsync-source-tab-button:focus-visible {
+	outline: 2px solid var(--interactive-accent);
+	outline-offset: 1px;
+}
+
+.mdsync-source-tabs .mdsync-source-tab-button:hover {
+	background: var(--background-modifier-hover);
+	color: var(--text-normal);
+}
+
+.mdsync-source-tabs .mdsync-source-tab-button.is-active {
+	background: var(--background-modifier-hover);
+	color: var(--text-accent);
+}
+
+.mdsync-source-tab-icon {
+	display: inline-flex;
+	flex: 0 0 auto;
+}
+
+.mdsync-source-tab-icon svg {
+	width: var(--mdsync-icon);
+	height: var(--mdsync-icon);
+}
+
+.mdsync-source-tab-label {
+	display: none;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* The active tab says where you are, even where the others are icons only. */
+.mdsync-source-tabs .mdsync-source-tab-button.is-active {
+	flex-shrink: 1;
+}
+
+.mdsync-source-tab-button.is-active .mdsync-source-tab-label {
+	display: inline;
+}
+
+.mdsync-source-tab-panel {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	gap: var(--size-4-2);
+	min-height: 0;
+	padding-right: var(--size-2-2);
+	overflow: auto;
+	scrollbar-gutter: stable;
+}
+
+:where(.mdsync-source-tab-panel > *) {
+	flex-shrink: 0;
+}

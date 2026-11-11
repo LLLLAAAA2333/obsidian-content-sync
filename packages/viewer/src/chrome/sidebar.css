@@ -1,0 +1,206 @@
+/* The sidebar: a column left of the note when it fits, else a panel from the left behind a menu button. */
+.sidebar-panel {
+	display: flex;
+	flex-direction: column;
+}
+
+.link-card {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 12px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 8px;
+	color: var(--text-muted);
+	font-size: 0.8125rem;
+	line-height: 1.45;
+}
+
+.link-fact {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	margin: 0;
+}
+
+.link-fact .icon {
+	width: 15px;
+	height: 15px;
+	margin-top: 1px;
+}
+
+.outline-label {
+	margin: 0;
+	padding: 0 0 10px 12px;
+	color: var(--text-faint);
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.outline {
+	display: flex;
+	flex-direction: column;
+	border-left: 1px solid var(--background-modifier-border);
+}
+
+.outline-item {
+	margin-left: -1px;
+	padding: 6px 8px 6px calc(12px + var(--depth) * 14px);
+	border: 0;
+	border-left: 2px solid transparent;
+	border-radius: 0 4px 4px 0;
+	background: none;
+	color: var(--text-muted);
+	font: inherit;
+	font-size: 0.8125rem;
+	line-height: var(--line-height-tight);
+	text-align: left;
+	cursor: pointer;
+}
+
+.outline-item:hover {
+	background: var(--background-secondary);
+	color: var(--text-normal);
+}
+
+.outline-item.is-active {
+	border-left-color: var(--interactive-accent);
+	color: var(--text-accent);
+	font-weight: 500;
+}
+
+.credit {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	color: var(--text-faint);
+	font-size: 0.75rem;
+	line-height: var(--line-height-tight);
+}
+
+.credit a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	border-radius: 4px;
+	color: var(--text-faint);
+}
+
+.credit a:hover {
+	background: var(--background-secondary);
+	color: var(--text-normal);
+}
+
+.credit .icon {
+	width: 14px;
+	height: 14px;
+}
+
+.sidebar .credit {
+	margin-top: auto;
+	padding: 12px 0 0 12px;
+}
+
+/* The note now lives only in this tab. */
+.link-card.is-warning {
+	border-color: rgba(var(--color-orange-rgb), 0.35);
+	background: rgba(var(--color-orange-rgb), 0.08);
+}
+
+.link-card.is-warning .link-views {
+	color: var(--text-normal);
+}
+
+.link-card.is-warning .link-views .icon {
+	color: rgb(var(--color-orange-rgb));
+}
+
+@media (min-width: 66rem) {
+	.sidebar {
+		position: sticky;
+		top: calc(var(--topbar-height) + 2.5rem);
+		display: flex;
+		align-self: start;
+		height: calc(100dvh - var(--topbar-height) - 3.75rem);
+	}
+
+	.sidebar-panel {
+		flex: 1;
+		min-height: 0;
+		overflow-y: auto;
+	}
+
+	/* The bar's chips say it in short; only a spent link needs the sentence here. */
+	.link-card {
+		margin-bottom: 1.5rem;
+	}
+
+	.link-card:not(.is-warning) {
+		display: none;
+	}
+}
+
+@media (max-width: 65.99rem) {
+	.sidebar.is-open::before {
+		content: "";
+		position: fixed;
+		inset: 0;
+		z-index: 3;
+		background: rgba(0, 0, 0, 0.45);
+	}
+
+	.sidebar-panel {
+		position: fixed;
+		inset: 0 auto 0 0;
+		z-index: 3;
+		width: min(19rem, 85vw);
+		padding: 6px 12px 1.75rem;
+		overflow-y: auto;
+		border-right: 1px solid var(--background-modifier-border);
+		background: var(--background-secondary);
+		transform: translateX(-100%);
+		visibility: hidden;
+		transition:
+			transform 0.2s,
+			visibility 0.2s;
+	}
+
+	.sidebar.is-open .sidebar-panel {
+		transform: none;
+		visibility: visible;
+	}
+
+	.menu-close {
+		flex: none;
+		align-self: flex-start;
+		margin-bottom: 12px;
+	}
+
+	.outline-label {
+		padding: 22px 0 8px 12px;
+	}
+
+	.outline {
+		margin-left: 4px;
+	}
+
+	.outline-item {
+		min-height: 40px;
+		font-size: 0.875rem;
+	}
+
+	.sidebar .credit a {
+		width: 32px;
+		height: 32px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.sidebar-panel {
+		transition: none;
+	}
+}

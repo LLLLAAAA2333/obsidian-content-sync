@@ -1,0 +1,24 @@
+{
+	"date": "2026-11-10",
+	"upstreamCommit": "6f0190efd517b709ff21c4d77bcc0b221bce52b6",
+	"pluginVersion": "0.1.0",
+	"nodeForFullRegression": "24.22.2",
+	"tests": {
+		"plugin": 3052,
+		"protocol": 63,
+		"relay": 283,
+		"viewer": 151
+	},
+	"monorepoTotal": 3549,
+	"plainModeTests": 37,
+	"standaloneFaultAndProbeTests": 2,
+	"typecheck": "passed",
+	"lint": "passed with non-blocking warnings",
+	"architecture": "passed",
+	"plainBuild": "passed",
+	"encryptedBuild": "passed",
+	"isolatedObsidian": "passed",
+	"ustcLiveTest": "not performed",
+	"productionWrites": "disabled",
+	"pluginSourceSha256": "96f4e7964f1b05d341393306fa3a2063552c4f3252db3559f9abbfe433d02243"
+}

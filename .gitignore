@@ -1,0 +1,59 @@
+# vscode
+.vscode
+
+# Intellij
+*.iml
+.idea
+
+# deps
+node_modules
+
+# Don't include the compiled main.js file in the repo.
+# It is uploaded to GitHub releases instead.
+main.js
+
+# Bundled from src/styles/, same as main.js.
+packages/plugin/styles.css
+
+# The link viewer's build, served by the relay.
+packages/viewer/dist
+
+# The relay as one uploadable JSON (packages/relay/bundle.mjs).
+packages/relay/dist
+
+# Exclude sourcemaps
+*.map
+
+# obsidian
+data.json
+
+# worker / relay local state
+.wrangler
+
+# Exclude macOS Finder (System Explorer) View States
+.DS_Store
+temp
+
+# coverage output
+coverage
+artifacts
+
+# Local code index.
+.codegraph/
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Plain-mode local experiments and packages
+/dist/
+/runtime/
+*.local.json
+
+# Credentials and live-vault state never belong in source control
+.env
+.env.*
+!.env.example
+.sync_state.json
+.sync_trash/
+.plain-sync/
+*.private.json

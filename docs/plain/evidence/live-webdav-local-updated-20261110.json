@@ -1,0 +1,94 @@
+{
+	"started": "2026-11-10T15:47:07.335Z",
+	"finished": "2026-11-10T15:51:43.485Z",
+	"target": "https://webdav.example/sample-vault/",
+	"localRoot": "<sample-vault>",
+	"mode": "Markdown top-level updated local-only; PlainEngine.preview with read-only guarded stores",
+	"contentPolicy": "markdown-local-updated-v1",
+	"equalIgnoringLocalUpdated": 22,
+	"coreSha256": "b7f31f495e2089d088d01537896273b7a4dc41294f4598c45d4df0c0e78b2d1e",
+	"elapsedSeconds": 276.14987308400003,
+	"baselineEntries": 0,
+	"pendingEntries": 0,
+	"local": {
+		"files": 2570,
+		"bytes": 404388293,
+		"errors": {}
+	},
+	"remote": {
+		"files": 4299,
+		"bytes": 421728516,
+		"errors": {}
+	},
+	"rowCounts": {
+		"equal": 2565,
+		"upload": 0,
+		"download": 1729,
+		"conflict": 5,
+		"delete-local": 0,
+		"delete-remote": 0,
+		"unknown": 0,
+		"excluded": 13
+	},
+	"plannedFileMutationsNotExecuted": 1729,
+	"previewReadBytes": 826116809,
+	"localVerificationReadBytes": 404388293,
+	"actualLocalFileWrites": 0,
+	"actualRemoteFileWrites": 0,
+	"actualSyncMetadataWrites": 0,
+	"requests": {
+		"GET": 4299,
+		"PROPFIND": 124
+	},
+	"responseStatuses": {
+		"PROPFIND 207": 124,
+		"GET 200": 4299
+	},
+	"diagnostics": [],
+	"excludedRules": [
+		".obsidian",
+		".claudian",
+		".git",
+		".sync_state.json",
+		".DS_Store",
+		".plain-sync",
+		".trash"
+	],
+	"inventoryBefore": {
+		"files": 2964,
+		"bytes": 866355117,
+		"fingerprint": "fc3e10c87b6705f0e52c944be4ca087b565705c5374094dff302319ead5ab0b3"
+	},
+	"inventoryAfter": {
+		"files": 2964,
+		"bytes": 866355117,
+		"fingerprint": "fc3e10c87b6705f0e52c944be4ca087b565705c5374094dff302319ead5ab0b3"
+	},
+	"localMetadataChangedPaths": [],
+	"localContentChangedPaths": [],
+	"localAfterErrors": {},
+	"remoteListingRecheckComplete": true,
+	"remoteListedMetadataChangedPaths": [],
+	"remoteListingBeforeDigest": "dbfc1c92d6a9511b51789c36f1dbd489a5efb04fbf64303ae8f42cc7e505d689",
+	"remoteListingAfterDigest": "dbfc1c92d6a9511b51789c36f1dbd489a5efb04fbf64303ae8f42cc7e505d689",
+	"peakRssMiB": 311.859375,
+	"limitations": [
+		"Read-only scan is not an atomic snapshot.",
+		"Remote recheck compares listing paths, types and reported ETags; remote bodies are hashed once.",
+		"Conditional PUT/DELETE and concurrency guarantees are not tested; production writes remain disabled.",
+		"Excluded folders are not recursively read remotely."
+	],
+	"comparisonToPriorDryRun": {
+		"updatedOnlyConflictsNowEqual": 22,
+		"previousConflictRemovedByEarlierUserRequestedCleanup": 1,
+		"remainingConflicts": [
+			"<redacted-task-area-1>.md",
+			"<redacted-task-doneTime>.md",
+			"<redacted-task-area-2>.md",
+			"<redacted-component-1>.components",
+			"<redacted-component-2>.components"
+		],
+		"remoteOnlyFilesAllServerNamedCopies": 1729
+	},
+	"publicationRedaction": "Private roots, endpoint and note names replaced for publication; aggregate metrics retained."
+}
