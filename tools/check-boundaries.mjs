@@ -20,8 +20,28 @@ assert.ok(
 	Object.keys(core.inputs).every((p) => !p.startsWith("src/ui/")),
 	"Engine imports UI",
 );
+for (const build of [core, plugin]) {
+	const mergeInputs = Object.entries(build.inputs).filter(([path]) =>
+		path.startsWith("src/merge/"),
+	);
+	assert.deepEqual(mergeInputs.map(([path]) => path).sort(), [
+		"src/merge/index.ts",
+		"src/merge/limits.ts",
+		"src/merge/text-merge.ts",
+	]);
+	for (const [path, input] of mergeInputs) {
+		for (const dependency of input.imports)
+			assert.ok(
+				!dependency.external &&
+					(dependency.path.startsWith("src/merge/") ||
+						(dependency.path.startsWith("node_modules/") &&
+							dependency.path.includes("diff-sequences"))),
+				`Pure merge module imports an effectful dependency: ${path} -> ${dependency.path}`,
+			);
+	}
+}
 const deps = JSON.parse(await readFile("package.json", "utf8")).dependencies;
 assert.deepEqual(Object.keys(deps).sort(), ["@jest/diff-sequences", "yaml"]);
 console.log(
-	"Standalone boundaries verified: no MDSync package or system imports.",
+	"Standalone boundaries verified: pure merge module; no MDSync package or system imports.",
 );

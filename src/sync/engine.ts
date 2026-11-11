@@ -1,8 +1,7 @@
 import { createHash, randomUUID } from "node:crypto";
 import * as fs from "node:fs/promises";
 import { Readable } from "node:stream";
-import { buildMergeSession, countUnresolved } from "@/merge";
-import { withEolOf } from "@/merge/eol";
+import { mergeText } from "@/merge";
 import { sharedText } from "./content";
 import { digest, hashFile, textFile } from "./files";
 import { localVersion } from "./local-version";
@@ -270,16 +269,28 @@ export class PlainEngine {
 					if (bytes.includes(0)) throw new Error("Binary content cannot merge");
 					if (createHash("sha256").update(bytes).digest("hex") !== hash)
 						throw new Error("Merge version corrupt");
-					texts.push(new TextDecoder("utf-8", { fatal: true }).decode(bytes));
-				}
-				const merged = buildMergeSession(texts[0]!, texts[1]!, texts[2]!);
-				if (countUnresolved(merged.changes) > 0)
-					throw new Error(
-						"Overlapping text edits; choose a side or edit manually",
+					texts.push(
+						new TextDecoder("utf-8", { fatal: true, ignoreBOM: true }).decode(
+							bytes,
+						),
 					);
+				}
+				const merged = mergeText(texts[0]!, texts[1]!, texts[2]!);
+				if (merged.status === "stopped")
+					throw new Error(
+						`Automatic merge stopped: ${merged.reason}; choose a side or edit manually`,
+					);
+				if (merged.status === "conflict") {
+					const ranges = merged.regions
+						.map(({ base }) => `[${base.start}, ${base.end})`)
+						.join(", ");
+					throw new Error(
+						`Overlapping text edits at base line ranges ${ranges} (zero-based); choose a side or edit manually`,
+					);
+				}
 				desired = (
 					await digest(
-						Readable.from([Buffer.from(withEolOf(texts[1]!, merged.text))]),
+						Readable.from([Buffer.from(merged.text)]),
 						this.journal.blobs,
 					)
 				).hash;

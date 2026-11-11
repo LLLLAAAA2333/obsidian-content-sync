@@ -1,0 +1,72 @@
+{
+	"version": "0.4.0",
+	"date": "2026-11-11",
+	"baseCommit": "b43656c8e92f059735e0126ba1287dacd05138ed",
+	"verification": {
+		"unitTests": 118,
+		"retainedSyncTests": 67,
+		"removedDerivedMergeTests": 18,
+		"newContractTests": 40,
+		"newEngineIntegrationTests": 11,
+		"generatedEditPairs": 4675,
+		"generatedDocuments": 300,
+		"faultTests": 2,
+		"frozenInstall": "passed",
+		"build": "passed",
+		"typecheck": "passed",
+		"moduleBoundaries": "passed",
+		"twoDeviceDemo": "passed",
+		"obsidian": {
+			"passed": true,
+			"pluginId": "plain-directory-sync",
+			"obsidian": "1.14.4 (visible app title)",
+			"checks": [
+				"preview creates no metadata",
+				"native preview and execute controls",
+				"cancel confirmation produces zero writes",
+				"read-only text comparison and narrow desktop layout",
+				"attachment bytes",
+				"explicit conflict resolution",
+				"native text merge: adjacent replacements, exact mixed endings, local updated",
+				"overlap merge refusal leaves both sides unchanged",
+				"lost merge response visible error",
+				"real process restart and idempotent merged-target recovery"
+			],
+			"errors": [],
+			"requests": {
+				"get": 88,
+				"put": 4,
+				"delete": 0
+			}
+		},
+		"productionVaultAccess": false,
+		"productionRemoteAccess": false,
+		"stateFormat": 2,
+		"cleanInstallBuildTests": "passed",
+		"lint": {
+			"errors": 0,
+			"warnings": 26,
+			"infos": 2,
+			"note": "Non-blocking style diagnostics; see local check.log."
+		},
+		"visualScreenshotsReviewed": [
+			"obsidian-merged.png",
+			"obsidian-merge-conflict.png"
+		]
+	},
+	"sourceAudit": "merge-source-audit.json",
+	"limits": {
+		"maxUtf16UnitsTotal": 1572864,
+		"maxLinesTotal": 60000,
+		"maxWorkTotal": 8000000,
+		"strictJsRssLimit": false,
+		"wallClockDeadline": false
+	},
+	"limitations": [
+		"Conservative shared-unmatched-line rejection includes some unambiguous edits",
+		"Line-level only; no YAML field merge, character merge or move recognition",
+		"No production write capability validation, actual vault installation or publication",
+		"No Windows/Linux/mobile execution"
+	],
+	"testFirstEvidence": "35 initial contract tests failed with mergeText missing before implementation; integration BOM test exposed decoder removal and passed after ignoreBOM:true."
+}

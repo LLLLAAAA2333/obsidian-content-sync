@@ -1,6 +1,6 @@
 # Obsidian Content Sync
 
-独立桌面 Obsidian 插件。`src/sync` 是普通目录同步引擎，`src/ui` 是原生 Obsidian 界面，`src/merge` 仅保留有来源标注的纯文本算法。没有 MDSync 服务、协议包或构建依赖。
+独立桌面 Obsidian 插件。`src/sync` 是普通目录同步引擎，`src/ui` 是原生 Obsidian 界面，`src/merge` 是按行为契约重新实现的纯文本合并模块（开发来源仍见 THIRD_PARTY_NOTICES.md）。没有 MDSync 服务、协议包或构建依赖。
 
 - Node 24、pnpm 10；`pnpm check` 检查格式、类型、构建和模块边界；`pnpm test` 运行单元测试及模拟服务故障测试；`pnpm e2e` 仅启动隔离 Obsidian 配置与合成库。
 - 保留原始 SHA-256 用于前提核验和恢复。Markdown 顶层 YAML 的 `updated` 只留本机，另用共享内容哈希判断一致性；其他属性照常同步。
@@ -9,3 +9,5 @@
 - 凭据不进入代码、日志、报告或 Git；公开证据只保留脱敏聚合结果。`artifacts/` 中原始记录不可发布。
 - 提取自 MDSync 的代码必须保留 MIT 许可证与 `THIRD_PARTY_NOTICES.md` 来源说明；不要恢复无关的上游系统。
 - GitHub Actions 模板尚未启用；不要自动启用发布或部署。
+
+- 合并契约见 `docs/MERGE_CONTRACT.md`。失败结果不得携带可写入正文；全部差异与组装共享预算，不归一化换行或将 updated 策略放进合并模块。

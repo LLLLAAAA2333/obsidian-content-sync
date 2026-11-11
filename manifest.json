@@ -1,7 +1,7 @@
 {
 	"id": "plain-directory-sync",
 	"name": "Plain Directory Sync (实验)",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"minAppVersion": "1.13.0",
 	"description": "普通目录 WebDAV 内容同步：完整核验、Markdown 本机属性、冲突保护与恢复。",
 	"author": "Obsidian Content Sync contributors",

@@ -231,16 +231,73 @@ try {
 		await readFile(join(vault, "conflict.md"), "utf8"),
 		"remote choice",
 	);
-	await writeFile(join(vault, "upload.md"), "lost response version");
-	await page.getByRole("button", { name: "完整核验 / 刷新预览" }).click();
+
+	// Establish a synthetic shared baseline through the same native controls.
+	const mergeNote = (time, body) => `---\nupdated: ${time}\n---\n${body}`;
+	async function refresh() {
+		await page.getByRole("button", { name: "完整核验 / 刷新预览" }).click();
+		await page.waitForFunction(
+			() =>
+				!document.querySelector(".ocs-status")?.textContent.includes("正在"),
+		);
+	}
+	await writeFile(join(vault, "merge.md"), mergeNote("local", "a\r\nb\n"));
+	await refresh();
+	await page.getByRole("button", { name: "执行当前计划", exact: true }).click();
+	await confirmButton("执行同步");
 	await page.waitForFunction(() =>
 		document
 			.querySelector(".ocs-summary")
-			?.textContent.includes("计划改写 1 个文件"),
+			?.textContent.includes("计划改写 0 个文件"),
 	);
+	await writeFile(join(vault, "merge.md"), mergeNote("local2", "A\r\nb\n"));
+	server.put("merge.md", "a\r\nB\n");
+	await refresh();
+	await page.getByRole("button", { name: "合并文本", exact: true }).click();
+	await confirmButton("应用选择");
+	await page.waitForFunction(() =>
+		document.querySelector(".ocs-summary")?.textContent.includes("冲突 0"),
+	);
+	assert.equal(
+		await readFile(join(vault, "merge.md"), "utf8"),
+		mergeNote("local2", "A\r\nB\n"),
+	);
+	assert.equal(server.files.get("merge.md").body.toString(), "A\r\nB\n");
+	await page.screenshot({ path: join(artifactRoot, "obsidian-merged.png") });
+
+	await writeFile(join(vault, "merge.md"), mergeNote("local3", "L\r\nB\n"));
+	server.put("merge.md", "R\r\nB\n");
+	await refresh();
+	const beforeConflict = server.counters.put;
+	await page.getByRole("button", { name: "合并文本", exact: true }).click();
+	await confirmButton("应用选择");
+	await page.waitForFunction(() =>
+		document.querySelector(".ocs-status")?.textContent.includes("Overlapping"),
+	);
+	assert.equal(server.counters.put, beforeConflict);
+	assert.equal(
+		await readFile(join(vault, "merge.md"), "utf8"),
+		mergeNote("local3", "L\r\nB\n"),
+	);
+	assert.equal(server.files.get("merge.md").body.toString(), "R\r\nB\n");
+	await page.screenshot({
+		path: join(artifactRoot, "obsidian-merge-conflict.png"),
+	});
+	await page.getByRole("button", { name: "采用远端", exact: true }).click();
+	await confirmButton("应用选择");
+	await page.waitForFunction(() =>
+		document.querySelector(".ocs-summary")?.textContent.includes("冲突 0"),
+	);
+
+	await writeFile(
+		join(vault, "merge.md"),
+		mergeNote("local4", "RECOVER\r\nB\n"),
+	);
+	server.put("merge.md", "R\r\nRECOVERED\n");
+	await refresh();
 	server.hooks.loseResponse = true;
-	await page.getByRole("button", { name: "执行当前计划", exact: true }).click();
-	await confirmButton("执行同步");
+	await page.getByRole("button", { name: "合并文本", exact: true }).click();
+	await confirmButton("应用选择");
 	await page.waitForFunction(() =>
 		document.querySelector(".ocs-status")?.textContent.includes("操作已停止"),
 	);
@@ -255,6 +312,14 @@ try {
 			!document.querySelector(".ocs-status")?.textContent.includes("正在"),
 	);
 	assert.equal(server.counters.put, writes);
+	assert.equal(
+		await readFile(join(vault, "merge.md"), "utf8"),
+		mergeNote("local4", "RECOVER\r\nRECOVERED\n"),
+	);
+	assert.equal(
+		server.files.get("merge.md").body.toString(),
+		"RECOVER\r\nRECOVERED\n",
+	);
 	await page.screenshot({ path: join(artifactRoot, "obsidian-recovered.png") });
 	assert.deepEqual(errors, []);
 	const result = {
@@ -270,8 +335,10 @@ try {
 			"read-only text comparison and narrow desktop layout",
 			"attachment bytes",
 			"explicit conflict resolution",
-			"lost response visible error",
-			"real process restart and idempotent recovery",
+			"native text merge: adjacent replacements, exact mixed endings, local updated",
+			"overlap merge refusal leaves both sides unchanged",
+			"lost merge response visible error",
+			"real process restart and idempotent merged-target recovery",
 		],
 		errors,
 		requests: server.counters,

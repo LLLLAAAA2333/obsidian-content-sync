@@ -1,0 +1,22 @@
+{
+	"baseline": "6f0190efd517b709ff21c4d77bcc0b221bce52b6",
+	"scope": ["src/**", "tests/**", "tools/**"],
+	"filesChecked": 34,
+	"exactWholeFileMatches": [],
+	"method": "Git blob SHA-1 of complete current files against all upstream blobs. This detects unchanged files only; it does not prove absence of derivative snippets or clean-room authorship.",
+	"removed": [
+		"src/merge/anchored-hunks.ts",
+		"src/merge/merge-model.ts",
+		"src/merge/diff.ts",
+		"src/merge/eol.ts",
+		"src/merge/budget.ts",
+		"tests/merge/anchored-hunks.test.ts",
+		"tests/merge/merge-model.test.ts"
+	],
+	"rewritten": ["src/merge/index.ts"],
+	"newImplementation": ["src/merge/text-merge.ts", "src/merge/limits.ts"],
+	"retainedRuntimeDependencies": ["@jest/diff-sequences@30.5.0", "yaml@2.9.0"],
+	"licensePreserved": true,
+	"historyRewritten": false,
+	"communityPolicyEligibility": "not assessed"
+}
